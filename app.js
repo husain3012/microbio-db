@@ -56,10 +56,6 @@ app.get("/datachart", (req, res) => {
   res.render("datachart");
 });
 
-// app.post("/datachart", (req, res) => {
-//   res.render("datachart");
-// });
-
 
 app.get("/add_new_entry", (req, res) => {
   res.render("newentry");
