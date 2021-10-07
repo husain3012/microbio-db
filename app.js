@@ -14,7 +14,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 mongoose
-  .connect(process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.DATABASE="mongodb+srv://admin-husain:sony9ofclubs@cluster0.ouw0w.mongodb.net/jnmc?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("DB connected"))
   .catch((err) => {
     console.log(err);
@@ -51,6 +51,15 @@ app.post("/", (req, res) => {
     }
   });
 });
+
+app.get("/datachart", (req, res) => {
+  res.render("datachart");
+});
+
+// app.post("/datachart", (req, res) => {
+//   res.render("datachart");
+// });
+
 
 app.get("/add_new_entry", (req, res) => {
   res.render("newentry");
