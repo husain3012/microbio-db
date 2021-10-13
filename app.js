@@ -16,7 +16,7 @@ app.set("view engine", "ejs");
 // process.env.DATABASE
 
 mongoose
-  .connect(process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.DATABASE="mongodb+srv://admin-husain:sony9ofclubs@cluster0.ouw0w.mongodb.net/jnmc?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("DB connected"))
   .catch((err) => {
     console.log(err);

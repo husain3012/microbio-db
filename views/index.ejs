@@ -93,7 +93,7 @@
 
     <ul class="list">
       <% if(records.length > 0) { %> <% records.forEach(sample=>{%>
-      <li>
+      <li class="list-details">
         <!-- <h5 class="age"><%=sample.age %></h5> -->
         <div class="card sample-card" age="<%= sample.age %>" specimen="<%=sample.specimen %>" progress="<%= sample.progress %>" sex="<%=sample.sex%>">
           <div class="card-body">
@@ -106,7 +106,7 @@
           </div>
           <div class="sensitivity-info card-body">
             <p class="card-text"><strong>Date: </strong><span data-timestamp="<%= new Date(sample.createdAt).getTime()%>" class="date"><%=new Date(sample.createdAt) %></span></p>
-            
+
             <hr />
             <p class="sample-date" data-timestamp="<%= new Date(sample.sampleDate).getTime()%>"></p>
             <h5 class="card-title"><strong>Progress:</strong> <%= sample.progress %></h5>

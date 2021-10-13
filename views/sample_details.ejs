@@ -8,41 +8,42 @@
       </div>
     </div>
     <div class="sample-details container">
-      <div class="row">
-        <div class="col-md-12 col-lg-6">
-          <h3>Name: <%=sample.patientName %></h3>
-        </div>
-        <div class="col-md-12 col-lg-6">
-          <h3>Age: <%= sample.age %></h3>
-        </div>
-        <div class="col-md-12 col-lg-6">
-          <h3>Sex: <%= sample.sex%></h3>
-        </div>
-        <div class="col-md-12 col-lg-6">
-          <h3>Date & Time: <%= new Date(sample.createdAt).toUTCString() %></h3>
-        </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6">
+        <p>Name: <%=sample.patientName %></p>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <p>Age: <%= sample.age %></p>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <p>Sex: <%= sample.sex%></p>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <p>Date Time: <%= new Date(sample.createdAt).toUTCString() %></p>
       </div>
     </div>
+  </div>
 
 
-    <div class="sample-details container">
-      <div class="row">
-        <%if(sample.sensitivity && sample.sensitivity.growthTime) {%>
+  <div class="sample-details container">
+    <div class="row">
+      <%if(sample.sensitivity && sample.sensitivity.growthTime) {%>
+      <div class="col-md-12 col-lg-6">
+          <p>Growth Time: <%= sample.sensitivity && sample.sensitivity.growthTime %></p>
+      </div>
         <div class="col-md-12 col-lg-6">
-            <h3>Growth Time: <%= sample.sensitivity && sample.sensitivity.growthTime %></h3>
+          <p>Bacteria Count: <%= sample.sensitivity && sample.sensitivity.bacterialCount %></p>
         </div>
-          <div class="col-md-12 col-lg-6">
-            <h3>Bacteria Count: <%= sample.sensitivity && sample.sensitivity.bacterialCount %></h3>
-          </div>
-        <% } %>
-        <div class="col-md-12 col-lg-6">
-          <h3>Bacteria type: <%=sample.sensitivity.aerobic?"Aerobic":"Anaerobic" %></h3>
-        </div>
-        <div class="col-md-12 col-lg-6">
-          <h3>Progress: <%=sample.progress %></h3>
-        </div>
+      <% } %>
+      <div class="col-md-12 col-lg-6">
+        <p>Bacteria type: <%=sample.sensitivity.aerobic?"Aerobic":"Anaerobic" %></p>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <p>Progress: <%=sample.progress %></p>
       </div>
     </div>
+  </div>
+
 
     <div class="col-md-12">
 

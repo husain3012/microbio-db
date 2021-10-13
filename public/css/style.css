@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  background-color: #F6F6F6;
 }
 a,
 a:hover {
@@ -11,7 +12,7 @@ a:hover {
 .navbar {
   display: flex;
   flex-direction: row;
-  background-color: #4b6587;
+  background-color: #0077B6;
   justify-content: space-between;
   align-items: center;
   padding: .5rem;
@@ -140,24 +141,30 @@ a:hover {
   padding-left: 0;
 }
 
+.list-details {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
  /* sample details */
 
  .sample-details{
-   background-color: #B1BED5;
+   background-color: #CAF0F8;
    padding: 30px;
    margin: 10px;
    width:98%;
    border-radius: 5px;
+   font-size: 1.7rem;
+   font-weight: bold;
    border-style: solid;
    border-width: 1px;
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
  }
 
  .panel {
-   background-color: #B1BED5;
+   background-color: #CAF0F8;
    border-radius: 5px;
    margin-right: : 1px;
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
  }
 
  .main-body {
@@ -225,6 +232,7 @@ a:hover {
    font-weight: bold;
  }
 
+
  .sample-doc {
    font-size: 2rem;
    font-weight: bold;
@@ -247,3 +255,16 @@ a:hover {
     width: 100%;
   }
  }
+
+ /* ------entry container--------- */
+  .entry-container{
+  background-color:  #F7FBFC;
+
+  font-size: 1.2rem;
+  padding:10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  }
+
+  .entry-container input:hover{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  }
