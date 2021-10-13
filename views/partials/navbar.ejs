@@ -1,8 +1,10 @@
 <nav class="navbar">
+  <!-- Left icons -->
   <div class="user-settings">
     <a type="button" class="navbar-brand" onclick="history.back()"><h1 class="fas fa-arrow-left"></h1> </a>
     <a href="/" class="navbar-brand"><h1 class="fas fa-home"></h1></a>
   </div>
+  <!-- Middle form -->
   <form action="/search" method="POST">
     <div class="form-field">
       <input class="form-control nav-form-input" type="text" name="sample_id" placeholder="Sample ID" id="nav-sample-id" />
@@ -13,14 +15,11 @@
 
     <button class="btn btn-outline-dark" type="submit">Search</button>
   </form>
-  <div class="user-settings">
-    <a href="/antibiogram" class=""><button class="btn btn-light" >Antibiogram</button></a>
-  </div>
 
-  <div class="user-settings">
-    <a href="/login" class=""><button>login</button></a>
-  </div>
-  <div class="user-settings">
-    <a href="/" class=""><h1 class="fas fa-user"></h1></a>
+  <!-- Right icons -->
+  <div class="user-settings d-flex align-items-center">
+    <a href="/antibiogram" class="me-2"><button class="btn btn-light">Antibiogram</button></a>
+    <a href="/trend_analysis" class="me-2"><button class="btn btn-light">Trend Analysis</button></a>
+    <a href="/login"><button class="btn btn-light">login</button></a>
   </div>
 </nav>

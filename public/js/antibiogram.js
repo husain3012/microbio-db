@@ -26,30 +26,51 @@ $("#antibiogram-form").on("submit", function (e) {
   $(`#loader`).addClass("active");
   clearChart(antibiogramChart);
   let bacterias = $(this).find("input[name=bacteria]").val().split(", ");
+  console.log(bacterias);
 
   let startDate = $(this).find("input[name=startDate]").val();
   let endDate = $(this).find("input[name=endDate]").val();
+  let panel = $(this).find("select[name=panel]").val();
+
   startDate ? (startDate = new Date(startDate)) : null;
   endDate ? (endDate = new Date(endDate)) : null;
-  bacterias.forEach((bacteria, index) => {
-    axios.post(`${window.location.origin}/api/antibiogram/bacteria`, { bacteria, startDate, endDate }).then((response) => {
-      $(`#loader`).removeClass("active");
-      console.log(response.data);
-      let data = [];
-      let labels = [];
-      for (const [key, value] of Object.entries(response.data)) {
-        if (value.total > 10) {
-          data.push((value.sus / value.total) * 100);
-          labels.push(key);
-        }
-      }
 
-      refreshChart(antibiogramChart, labels, data, bacteria, index);
+  var fetchData = new Promise((resolve, reject) => {
+    bacterias.forEach((bacteria, index) => {
+      axios.get("/api/antibiotic/getPanel/" + panel).then((atb_panel) => {
+        axios.post(`/api/antibiogram/bacteria`, { bacteria, startDate, endDate }).then((response) => {
+          $(`#loader`).removeClass("active");
+          let data = [];
+          let labels = [];
+          atb_panel.data.data.forEach((atb) => {
+            labels.push(atb.name);
+            if (response.data[atb.name]) {
+              data.push(response.data[atb.name].sus / response.data[atb.name].total) * 100;
+            } else {
+              data.push(0);
+            }
+          });
+          // for (const [key, value] of Object.entries(response.data)) {
+          //   if (value.total > 10) {
+          //     data.push((value.sus / value.total) * 100);
+          //     labels.push(key);
+          //   }
+          // }
+
+          addChartData(antibiogramChart, labels, data, bacteria, index);
+          if (index === bacterias.length - 1) {
+            resolve();
+          }
+        });
+      });
     });
+  });
+  fetchData.then(() => {
+    antibiogramChart.update();
   });
 });
 
-function refreshChart(chart, labels, data, bacteria, i) {
+async function addChartData(chart, labels, data, bacteria, i) {
   chart.data.labels = labels;
   chart.data.datasets[i] = {
     data: [...data],
@@ -57,7 +78,6 @@ function refreshChart(chart, labels, data, bacteria, i) {
     backgroundColor: [randomRGBA(0.5)],
     borderColor: [randomRGBA(1)],
   };
-  chart.update();
 }
 
 function clearChart(chart) {

@@ -1,3 +1,10 @@
+:root {
+  --primary: #0077B6;
+  --blood: #e6849088;
+  --urine: #2b934888;
+  --puss: #fff49188;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -12,15 +19,19 @@ a:hover {
 .navbar {
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
   background-color: #0077B6;
+=======
+  background-color: var(--primary);
+>>>>>>> 807a9f8962a9ffa551e2522818dd3b1baffa8826
   justify-content: space-between;
   align-items: center;
   padding: .5rem;
 }
 .navbar form {
   display: flex;
-  background-color: #c8c6c6;
-  padding: 10px;
+  background-color: #E5E5E5;
+  padding: 5px;
   border-radius: 5px;
   margin-bottom: 0;
 }
@@ -35,10 +46,11 @@ a:hover {
   justify-content: center;
   align-items: center;
   position: fixed;
-  right: 40px;
-  bottom: 40px;
+  right: 30px;
+  bottom: 30px;
   border-radius: 100%;
-  background-color: #4b6587dd;
+  background-color: var(--primary);
+  opacity: 80%;
   color: #f7f6f2;
   padding: 10px;
   width: 80px;
@@ -47,7 +59,8 @@ a:hover {
   cursor: pointer;
 }
 .add-new-entry:hover {
-  background-color: #f8485e;
+  background-color: #ff0a54;
+  opacity: 100%;
   transition: all 0.3s ease;
   transform: scale(1.1);
 }
@@ -57,6 +70,9 @@ a:hover {
 }
 
 /*********************************  */
+.btn-primary {
+  background-color: var(--primary);
+}
 .card {
   margin: 1rem 0;
 }
@@ -94,13 +110,13 @@ a:hover {
 }
 
 .sample-info.blood {
-  background-color: #e68490;
+  background-color: var(--blood);
 }
 .sample-info.urine {
-  background-color: #b5c7a6;
+  background-color: var(--urine);
 }
 .sample-info.puss {
-  background-color: #fff491;
+  background-color: var(--puss);
 }
 
 /* ******************* */
@@ -245,6 +261,16 @@ a:hover {
   #nav-sample-id {
     width: 13ch;
   }
+  .add-new-entry {
+    right: 20px;
+    bottom: 20px;
+    width: 55px;
+    height: 55px;
+    opacity: 90%;
+  }
+  .add-new-entry h1 {
+    font-size: 30px;
+  }  
   input, select {
     margin-bottom: 2px;
   }

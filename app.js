@@ -71,7 +71,6 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
-
 app.get("/update_progress/:sample_id", (req, res) => {
   console.log(req.params);
   let sample_id = req.params.sample_id;
@@ -223,16 +222,22 @@ app.get("/antibiogram", (req, res) => {
   res.render("antibiogram", { antibiogram });
 });
 
-app.post("/antibiogram", (req, res) => {
-  const bacteria = req.body.bacteria;
+// app.post("/antibiogram", (req, res) => {
+//   const bacteria = req.body.bacteria;
 
-  axios.get(serverRoot + "/api/antibiogram/bacteria?bacteria=" + bacteria).then((response) => {
-    if (response.status) {
-      console.log(response.data);
-      res.render("antibiogram", { antibiogram: response.data });
-    }
-  });
+//   axios.get(serverRoot + "/api/antibiogram/bacteria?bacteria=" + bacteria).then((response) => {
+//     if (response.status) {
+//       console.log(response.data);
+//       res.render("antibiogram", { antibiogram: response.data });
+//     }
+//   });
+// });
+
+app.get("/trend_analysis", (req, res) => {
+  res.render("trend_analysis");
 });
+
+
 
 app.use("/api", sampleRoute);
 app.use("/api", antibioticRoutes);

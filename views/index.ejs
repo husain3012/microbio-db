@@ -5,20 +5,20 @@
   <br />
   <!-- Date input -->
   <form action="/" method="POST" class="form-group">
-    <div class="row">
-      <div class="col-md-5 col-12">
-        <div class="form-floating">
+    <div class="row d-flex justify-content-between">
+      <div class="col-md-6 col-12">
+        <div class="input-group">
+          <span class="input-group-text">Start Date:</span>
           <input class="form-control" type="date" id="startDate" name="startDate" />
-          <label>Start Date: </label>
         </div>
       </div>
       <div class="col-md-5 col-12">
-        <div class="form-floating">
+        <div class="input-group">
+          <span class="input-group-text">End Date:</span>
           <input class="form-control" type="date" id="startDate" name="endDate" />
-          <label>End Date: </label>
         </div>
       </div>
-      <div class="col-md-2 mt-auto col-12">
+      <div class="col-md-1 col-2">
         <button class="btn btn-primary" type="submit">Go</button>
       </div>
     </div>
@@ -91,6 +91,7 @@
       </div>
     </div>
 
+    <!-- Sample list -->
     <ul class="list">
       <% if(records.length > 0) { %> <% records.forEach(sample=>{%>
       <li class="list-details">
@@ -99,7 +100,7 @@
           <div class="card-body">
             <div class="sample-info <%=sample.specimen %>">
               <h5 class="card-title"><strong class="sample-id"><%= sample.sample_id %></strong></h5>
-              <h6 class="card-subtitle mb-2"><strong>Name:</strong><span class="name"><%= sample.patientName %></span></h6>
+              <h6 class="card-subtitle mb-2"><strong>Name: </strong><span class="name"><%= sample.patientName %></span></h6>
               <p class="card-text"><strong>Age: </strong><span class="age"><%=sample.age %></span> <strong>Sex: </strong><span class="sex"><%=sample.sex %></span></p>
               <a href="#" class="card-link"><strong>Specimen: </strong><span class="specimen"><%=sample.specimen %></span> </a>
             </div>
@@ -108,7 +109,7 @@
             <p class="card-text"><strong>Date: </strong><span data-timestamp="<%= new Date(sample.createdAt).getTime()%>" class="date"><%=new Date(sample.createdAt) %></span></p>
 
             <hr />
-            <p class="sample-date" data-timestamp="<%= new Date(sample.sampleDate).getTime()%>"></p>
+            <p class="sample-date" data-timestamp="<%= new Date(sample.sampleDate).getTime()%>"><%= new Date(sample.sampleDate)%></p>
             <h5 class="card-title"><strong>Progress:</strong> <%= sample.progress %></h5>
             <% if(sample.progress == "growth"){%>
             <p class="card-text"><strong>Growth Time: </strong> <%=sample.sensitivity.growthTime %> (min) <strong>Type: </strong><%=sample.sensitivity.aerobic?"Aerobic":"Anaerobic" %></p>

@@ -1,26 +1,23 @@
 <%-include("partials/header") %> <%-include("partials/navbar") %>
 
 <div class="container mt-2">
-  <form id="antibiogram-form" method="" action="">
+  <form id="trend-analysis-form" method="" action="">
     <div class="row align-items-center">
       <!-- Start Date -->
       <div class="col-md-3 col-12">
         <div class="form-floating">
-          <input required class="form-control" type="date" id="startDate" name="startDate" />
-          <label class="form-label">Start Date: </label>
+          <input required class="form-control" type="number" name="startYear" />
+          <label class="form-label">Start Year: </label>
         </div>
       </div>
       <!-- End Date -->
       <div class="col-md-3 col-12">
         <div class="form-floating">
-          <input required class="form-control" type="date" id="startDate" name="endDate" />
-          <label class="form-label">End Date: </label>
+          <input required class="form-control" type="number" name="endYear" />
+          <label class="form-label">End Year: </label>
         </div>
       </div>
       <!-- Bacteria -->
-      <!-- <div class="col-md-3 col-12">
-      
-        </div> -->
       <div class="col-md-3 col-12">
         <div class="form-floating">
           <select required class="form-control" name="panel">
@@ -30,9 +27,10 @@
             <option value="gramNegative">Gram Negative</option>
             <option value="pseudomonas">Pseudomonas</option>
           </select>
+        </div>
         <div class="form-floating">
           <input required class="form-control" type="text" name="bacteria" />
-          <label class="form-label">Bacteria(s):</label>  
+          <label class="form-label">Bacteria:</label>
         </div>
       </div>
       <div class="col-md-3 col-12">
@@ -42,8 +40,8 @@
   </form>
 </div>
 <div class="container">
-  <canvas id="myChart" width="500" height="200"></canvas>
+  <canvas id="trend-chart" width="500" height="200"></canvas>
 </div>
 <%-include("partials/footer") %> <%-include("partials/loader") %>
 
-<script src="/js/antibiogram.js"></script>
+<script src="/js/trend.js"></script>

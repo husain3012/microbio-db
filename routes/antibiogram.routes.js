@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { bacteriaAntibiogram, yearlyAntibiogram } = require("../controllers/antibiogram.controller");
+const { bacteriaAntibiogram, trendAnalysis } = require("../controllers/antibiogram.controller");
 
 router.post("/antibiogram/bacteria", bacteriaAntibiogram);
-router.post("/antibiogram/yearly", yearlyAntibiogram);
+router.post("/antibiogram/trend_analysis", trendAnalysis);
 
 module.exports = router;

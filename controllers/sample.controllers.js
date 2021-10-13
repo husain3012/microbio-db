@@ -86,7 +86,7 @@ exports.getByDate = async (req, res) => {
   console.log(endDate);
 
   Sample.find({ createdAt: { $gte: startDate, $lte: endDate } })
-    // .limit(500)
+    .limit(req.query.limit || 1000)
     .sort({ createdAt: -1 })
     .exec((err, result) => {
       if (err) {
@@ -165,6 +165,7 @@ exports.randomSampleGen = async (req, res) => {
     end = new Date(),
     sensitivity = {},
     staphPanel = [];
+    pseudoPanel=[];
   let randomSamples = [];
   for (i = 0; i < count; i++) {
     date = new Date(Math.floor(Math.random() * end.getTime()));
@@ -184,8 +185,8 @@ exports.randomSampleGen = async (req, res) => {
       streptococcussPanel: [],
       gramNegativeName: "",
       gramNegativePanel: [],
-      pseudomonasName: "",
-      pseudomonasPanel: [],
+      pseudomonasName: "Pseudomonas",
+      pseudomonasPanel: pseudoPanel,
     };
     // This array can be automated (by loops) to consist of all the panel (by array) names if needed
     staphPanel = [
@@ -211,6 +212,40 @@ exports.randomSampleGen = async (req, res) => {
       },
       {
         antib: "COT",
+        sensitivity: sensitivityArr[Math.floor(Math.random() * sensitivityArr.length)],
+      },
+      {
+        antib: "Lx",
+        sensitivity: sensitivityArr[Math.floor(Math.random() * sensitivityArr.length)],
+      },
+      {
+        antib: "DOX",
+        sensitivity: sensitivityArr[Math.floor(Math.random() * sensitivityArr.length)],
+      },
+      {
+        antib: "Va",
+        sensitivity: sensitivityArr[Math.floor(Math.random() * sensitivityArr.length)],
+      },
+    ];
+    pseudoPanel = [
+      {
+        antib: "CAZ",
+        sensitivity: sensitivityArr[Math.floor(Math.random() * sensitivityArr.length)],
+      },
+      {
+        antib: "G",
+        sensitivity: sensitivityArr[Math.floor(Math.random() * sensitivityArr.length)],
+      },
+      // {
+      //   antib: "Tob",
+      //   sensitivity: sensitivityArr[Math.floor(Math.random() * sensitivityArr.length)],
+      // },
+      {
+        antib: "Ak",
+        sensitivity: sensitivityArr[Math.floor(Math.random() * sensitivityArr.length)],
+      },
+      {
+        antib: "Pit",
         sensitivity: sensitivityArr[Math.floor(Math.random() * sensitivityArr.length)],
       },
     ];
