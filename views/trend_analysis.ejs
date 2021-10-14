@@ -3,22 +3,22 @@
 <div class="container mt-2">
   <form id="trend-analysis-form" method="" action="">
     <div class="row align-items-center">
-      <!-- Start Date -->
-      <div class="col-md-3 col-12">
+      <!-- Start Year -->
+      <div class="col-lg-2 col-6">
         <div class="form-floating">
           <input required class="form-control" type="number" name="startYear" />
           <label class="form-label">Start Year: </label>
         </div>
       </div>
-      <!-- End Date -->
-      <div class="col-md-3 col-12">
+      <!-- End Year -->
+      <div class="col-lg-2 col-6">
         <div class="form-floating">
           <input required class="form-control" type="number" name="endYear" />
           <label class="form-label">End Year: </label>
         </div>
       </div>
-      <!-- Bacteria -->
-      <div class="col-md-3 col-12">
+      <!-- Panel -->
+      <div class="col-lg-3 col-5">
         <div class="form-floating">
           <select required class="form-control" name="panel">
             <option hidden value="">Select Panel</option>
@@ -28,12 +28,16 @@
             <option value="pseudomonas">Pseudomonas</option>
           </select>
         </div>
+      </div>
+      <!-- Bacteria -->
+      <div class="col-lg-3 col-5">
         <div class="form-floating">
           <input required class="form-control" type="text" name="bacteria" />
-          <label class="form-label">Bacteria:</label>
+          <label class="form-label">Bacteria(s):</label>  
         </div>
       </div>
-      <div class="col-md-3 col-12">
+      <!-- Submit button -->
+      <div class="col-lg-2 col-2">
         <button class="btn btn-primary m-auto">Get Reports</button>
       </div>
     </div>

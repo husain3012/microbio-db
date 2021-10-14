@@ -3,60 +3,83 @@
 
 <div class="container entry-container">
 <div class="container mt-3">
-  <form action="/add_new_entry" method="POST">
-    <div class="mb-3">
-      <label class="form-label">Sample ID</label>
-      <input required name="sampleId" type="number" class="form-control" />
+  <form class="row full-page-form" action="/add_new_entry" method="POST">
+    <!-- Sample Id -->
+    <div class="col-lg-4 col-6 mb-3">
+      <div class="input-group">
+        <label class="input-group-text">Sample ID</label>
+        <input required name="sampleId" type="number" class="form-control" />
+      </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Patient Name</label>
-      <input required name="patientName" type="text" class="form-control" />
+    <!-- Patient Name -->
+    <div class="col-lg-4 col-6 mb-3">
+      <div class="input-group">
+        <label class="input-group-text">Patient Name</label>
+        <input required name="patientName" type="text" class="form-control" />
+      </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Age</label>
-      <input type="number" name="age" class="form-control" />
+    <!-- Age -->
+    <div class="col-lg-4 col-6 mb-3">
+      <div class="input-group">
+        <label class="input-group-text">Age</label>
+        <input type="number" name="age" class="form-control" />
+      </div>
     </div>
-    <div class="mb-3 form-radio">
-      <input name="sex" type="radio" class="form-check-input" value="m" />
-      <label class="form-check-label">Male</label>
-      <input name="sex" type="radio" class="form-check-input" value="f" />
-      <label class="form-check-label">Female</label>
-      <input name="sex" type="radio" class="form-check-input" value="o" />
-      <label class="form-check-label">Other</label>
+    <!-- Sex -->
+    <div class="col-lg-4 col-6 mb-3">
+      <input name="sex" type="radio" class="btn-check" value="m" id="sex-male" />
+      <label class="btn btn-outline-dark" for="sex-male">Male</label>
+      <input name="sex" type="radio" class="btn-check" value="f" id="sex-female" />
+      <label class="btn btn-outline-dark" for="sex-female">Female</label>
+      <input name="sex" type="radio" class="btn-check" value="o" id="sex-others" />
+      <label class="btn btn-outline-dark" for="sex-others">Other</label>
     </div>
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupSelect01">Specimen: </label>
-      <select required id="specimen-type" name="specimen" class="form-select">
-        <option value="" selected disabled hidden>Choose Specimen</option>
-        <option value="urine">Urine</option>
-        <option value="puss">Puss</option>
-        <option value="blood">Blood</option>
-        <option id="other-specimen-value" value="other">Other</option>
-      </select>
-      <input id="other-specimen"  type="text" class="form-control" placeholder="Specimen Type" />
+    <!-- Specimen -->
+    <div class="col-lg-4 col-6 mb-3">
+      <div class="input-group">
+        <label class="input-group-text" for="inputGroupSelect01">Specimen: </label>
+        <select required id="specimen-type" name="specimen" class="form-select">
+          <option value="" selected disabled hidden>Choose Specimen</option>
+          <option value="urine">Urine</option>
+          <option value="puss">Puss</option>
+          <option value="blood">Blood</option>
+          <option id="other-specimen-value" value="other">Other</option>
+        </select>
+        <input id="other-specimen"  type="text" class="form-control" placeholder="Specimen Type" />
+      </div>
     </div>
-
-    <div class="mb-3">
-      <label class="form-label">Specimen Received On:</label>
-      <input type="date" name="specimenDate" class="form-control" />
+    <!-- Specimen recieved on -->
+    <div class="col-lg-4 col-6 mb-3">
+      <div class="input-group">
+        <label class="input-group-text">Received On:</label>
+        <input type="date" name="specimenDate" class="form-control" />
+      </div>
     </div>
-
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupSelect01">Department: </label>
-      <select required name="department" class="form-select">
-        <option value="" selected disabled hidden>Choose Department</option>
-        <option value="surgery">Surgery</option>
-        <option value="surgery">xxxx</option>
-        <option value="surgery">yyyy</option>
-      </select>
+    <!-- Department -->
+    <div class="col-lg-4 col-6 mb-3">
+      <div class="form-floating">
+        <select required name="department" class="form-select">
+          <option value="" selected disabled hidden>Choose Department</option>
+          <option value="surgery">Surgery</option>
+          <option value="surgery">xxxx</option>
+          <option value="surgery">yyyy</option>
+        </select>
+        <label for="inputGroupSelect01">Department: </label>
+      </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Physician/Surgeon</label>
-      <input name="physician" type="text" class="form-control" />
+    <!-- Physician/ Surgeon -->
+    <div class="col-lg-4 col-6 mb-3">
+      <div class="form-floating">
+        <input name="physician" type="text" class="form-control" />
+        <label class="form-label">Physician/ Surgeon</label>
+      </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Exam Required</label>
-      <input name="examRequired" type="text" class="form-control" />
+    <!-- Exam Required -->
+    <div class="col-lg-4 col-6 mb-3">
+      <div class="form-floating">
+        <input name="examRequired" type="text" class="form-control" />
+        <label class="form-label">Exam Required</label>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary">NEXT</button>
   </form>

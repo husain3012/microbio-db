@@ -1,45 +1,66 @@
 <%-include("partials/header") %> <%-include("partials/navbar") %>
 
 <div class="container">
-  <h1><%=sample.sample_id%></h1>
-  <form action="/update_progress" method="POST">
-    <input type="hidden" name="sample_id" value="<%=sample.sample_id%>" />
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupSelect01">Progress: </label>
-      <select id="sample-progress" required name="progress" class="form-select">
-        <option  <%=!sample.progress&&"selected"%> disabled hidden>Select Progress</option>
-        <option <%=(sample.progress==="sterile")&&"selected"%>  value="sterile">Sterile</option>
-        <option <%=(sample.progress==="contaminated")&&"selected"%>  value="contaminated">Contaminated</option>
-        <option <%=(sample.progress==="growth")&&"selected"%>  value="growth">Growth</option>
-      </select>
+  <div class="row">
+    <h1><%=sample.sample_id%></h1>
+  </div>
+  <form class="row full-page-form" action="/update_progress" method="POST">
+    <!-- Hidden -->
+    <div class="row">
+      <input type="hidden" name="sample_id" value="<%=sample.sample_id%>" />
     </div>
-    <div id="sample-contaminated">
+    <!-- Progress -->
+    <div class="row">
+      <div class="col-4 mb-3">
+        <div class="input-group">
+          <label class="input-group-text" for="inputGroupSelect01">Progress: </label>
+          <select id="sample-progress" required name="progress" class="form-select">
+            <option  <%=!sample.progress&&"selected"%> disabled hidden>Select Progress</option>
+            <option <%=(sample.progress==="sterile")&&"selected"%>  value="sterile">Sterile</option>
+            <option <%=(sample.progress==="contaminated")&&"selected"%>  value="contaminated">Contaminated</option>
+            <option <%=(sample.progress==="growth")&&"selected"%>  value="growth">Growth</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- Remarks -->
+    <div class="row" id="sample-contaminated">
       <div class="mb-3">
         <label class="form-label">Remarks</label>
         <textarea class="form-control" name="remarks" column ="10" rows="3"><%=sample.remarks%></textarea>
       </div>
     </div>
-    <div id="sample-growth">
-      <div class="mb-3">
-        <label class="form-label">Growth Time (minutes)</label>
-        <input name="growth_time" value="<%=(sample.sensitivity && sample.sensitivity.growthTime) %>" type="number" class="form-control" />
+    <!-- Growth -->
+    <div class="row" id="sample-growth">
+      <!-- Growth time -->
+      <div class="col-lg-4 mb-3">
+        <div class="input-group">
+          <label class="input-group-text">Growth Time (minutes)</label>
+          <input name="growth_time" value="<%=(sample.sensitivity && sample.sensitivity.growthTime) %>" type="number" class="form-control" />
+        </div>
       </div>
-      <div class="mb-3 form-radio">
-        <input name="growth_type" type="radio" class="form-check-input" value="aerobic" <%=(sample.sensitivity&& sample.sensitivity.aerobic) && "checked" %> />
-        <label class="form-check-label">Aerobic</label>
-        <input name="growth_type" type="radio" class="form-check-input" value="anaerobic" <%=(sample.sensitivity&& sample.sensitivity.anaerobic) && "checked" %> />
-        <label class="form-check-label">Anaerobic</label>
+      <!-- Anaerobic/ Aerobic -->
+      <div class="col-lg-4 mb-3">
+        <div class="form-radio d-flex justify-content-center">
+          <input name="growth_type" type="radio" class="btn-check" id="aerobic" value="aerobic" <%=(sample.sensitivity&& sample.sensitivity.aerobic) && "checked" %> />
+          <label class="btn btn-outline-dark me-2" for="aerobic">Aerobic</label>
+          <input name="growth_type" type="radio" class="btn-check" id="anaerobic" value="anaerobic" <%=(sample.sensitivity&& sample.sensitivity.anaerobic) && "checked" %> />
+          <label class="btn btn-outline-dark" for="anaerobic">Anaerobic</label>
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Bacteria Count</label>
-        <input name="bacterialCount" value="<%= sample.sensitivity && sample.sensitivity.bacterialCount %>" type="number" class="form-control" />
+      <!-- Bacteria Count -->
+      <div class="col-lg-4 mb-3">
+        <div class="input-group">
+          <label class="input-group-text">Bacteria Count</label>
+          <input name="bacterialCount" value="<%= sample.sensitivity && sample.sensitivity.bacterialCount %>" type="number" class="form-control" />
+        </div>
       </div>
-
+      <!-- Sensitivity Report -->
       <div class="sensitivity-report-editable">
         <% let sensi = sample.sensitivity %> <% let current_ab={} %>
-        <div class="col-md-12">
+        <div class="col-md-12 mb-2">
           <input <%=sensi&& sensi.staphylococcusPanel && sensi.staphylococcusPanel.length && "checked" %> class="form-check-input bacteria-panel" type="checkbox" value="staphylococcusPanel" />
-          <label class="form-check-label" for="flexCheckDefault"> Staphylococcus Panel </label>
+          <label class="form-check-label mb-2" for="flexCheckDefault"> Staphylococcus Panel </label>
 
           <div class="panel-reaction-tables" id="staphylococcusPanel">
             <input class="form-label" type="text" name="staphylococcusName" value="<%= sensi && sensi.staphylococcusName %>" />
@@ -59,10 +80,9 @@
             <% }) %>
           </div>
         </div>
-
-        <div class="col-md-12">
+        <div class="col-md-12 mb-2">
           <input <%=(sensi&& sensi.streptococussPanel && sensi.streptococussPanel.length) && "checked" %> class="form-check-input bacteria-panel" type="checkbox" value="streptococussPanel" />
-          <label class="form-check-label" for="flexCheckDefault"> Streptococuss Panel </label>
+          <label class="form-check-label mb-2" for="flexCheckDefault"> Streptococuss Panel </label>
 
           <div class="panel-reaction-tables" id="streptococussPanel">
             <input class="form-label" type="text" name="streptococussName" value="<%= sensi && sensi.streptococussName %>" />
@@ -81,9 +101,9 @@
             <% }) %>
           </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 mb-2">
           <input <%=(sensi&& sensi.gramNegativePanel && sensi.gramNegativePanel.length) && "checked" %> class="form-check-input bacteria-panel" type="checkbox" value="gramNegativePanel" />
-          <label class="form-check-label" for="flexCheckDefault"> Gram Negative Panel </label>
+          <label class="form-check-label mb-2" for="flexCheckDefault"> Gram Negative Panel </label>
 
           <div class="panel-reaction-tables" id="gramNegativePanel">
             <input class="form-label" type="text" name="gramNegativeName" value="<%= sensi && sensi.gramNegativeName %>" />
@@ -102,9 +122,9 @@
             <% }) %>
           </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 mb-3">
           <input <%=(sensi&& sensi.pseudomonasPanel && sensi.pseudomonasPanel.length) && "checked" %> class="form-check-input bacteria-panel" type="checkbox" value="pseudomonasPanel" />
-          <label class="form-check-label" for="flexCheckDefault"> Pseudomonas Panel </label>
+          <label class="form-check-label mb-2" for="flexCheckDefault"> Pseudomonas Panel </label>
 
           <div class="panel-reaction-tables" id="pseudomonasPanel">
             <input class="form-label" type="text" name="pseudomonasName" value="<%= sensi && sensi.pseudomonasName %>" />
@@ -125,10 +145,12 @@
         </div>
       </div>
     </div>
+    <!-- Buttons -->
+    <div>
+      <a href="/" class="btn btn-outline-primary"><%= sample.sensitivity?"Cancel":"Add Later" %> </a>
 
-    <a href="/" class="btn btn-outline-primary"><%= sample.sensitivity?"Cancel":"Add Later" %> </a>
-
-    <button type="submit" class="btn btn-primary">Save</button>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
   </form>
 </div>
 
