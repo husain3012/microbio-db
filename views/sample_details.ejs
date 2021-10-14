@@ -102,16 +102,17 @@
 
         <%if(sample.remarks){ %>
         <div class="sample-details col-md-12">
-          <h3>Remarks: <%= sample.remarks %></h3>
+          <p>Remarks: <%= sample.remarks %></p>
         </div>
         <% } %>
       <div class="col-md-12 sample-doc">
-        <h2>Physician Name: <%= sample.physician %></h2>
+        <p>Physician Name: <%= sample.physician %></p>
       </div>
 
-      <a href="/printReport/<%= sample.sample_id %>"  id="print-content" class="btn btn-outline-dark" >Print Report</a>
+      <a href="/printReport/<%= sample.sample_id %>"  id="print-content" class="btn btn-light" >Print Report</a>
+      <button class="btn btn-light" onclick="window.history.back()">Back</button>
     </div>
   </div>
-  <button class="btn btn-outline-dark" onclick="window.history.back()">Back</button>
+  <!-- <button class="btn btn-outline-info" onclick="window.history.back()">Back</button> -->
 </div>
-<%-include("partials/add-new") %> <%-include("partials/footer") %>
+<%-include("partials/footer") %>

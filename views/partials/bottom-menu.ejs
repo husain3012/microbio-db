@@ -1,0 +1,21 @@
+<div class="bottomMenu">
+  <!-- Icons -->
+  <div class="bottom-menu-icon scroll-to-top" id="backToTop"><img src="assets/icons/scrollToTop.svg" /></div>
+  <% if( user && user.level==0){ %>
+  <div class="bottom-menu-icon add-new-entry">
+    <a href="/add_new_entry"><img src="assets/icons/plus.svg" /></a>
+  </div>
+  <% } %>
+  <div class="bottom-menu-icon search-records" id="searchRec"><img src="assets/icons/search.svg" id="searchIcon" /></div>
+
+  <!-- Search form -->
+  <form class="search-form" action="/search" method="POST">
+    <div class="form-field">
+      <input class="form-control search-form-input" type="text" name="sample_id" placeholder="Sample ID" id="search-sample-id" />
+    </div>
+    <div class="form-field">
+      <input class="form-control search-form-input" type="text" name="patientName" placeholder="Patient Name" />
+    </div>
+    <button class="search-rec-btn" type="submit"><img src="assets/icons/search.svg" style="width: 25px" /></button>
+  </form>
+</div>

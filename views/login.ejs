@@ -1,27 +1,35 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <body>
-    <div class="login-header">
-      <a href="/">Home</a>
-    </div>
-    <div class="main-body">
-      <div class="login-container">
-        <div class="login-container-heading">
-          <h1>Login</h1>
-        </div>
-        <div class="login-form">
-          <form class="login-form" action="/login" method="post">
-            <input class="input-area" type="text" name="username" value="" placeholder="username">
-            <input class="input-area" type="password" name="password" value="" placeholder="password">
-            <button type="submit" class="input-area login-button">Login</button>
-          </form>
-        </div>
+<%-include("partials/header") %>
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+<div class="login-form-container">
+  <main class="form-signin">
+    <form method="POST" action="/login">
+      <!-- <img class="mb-4" src="" alt="" width="72" height="57" /> -->
+      <h1 class="h3 mb-3 fw-normal">Authorize</h1>
+
+      <div class="form-floating">
+        <input type="text" class="form-control mb-2" name="username" id="floatingInput" placeholder="admin" />
+        <label for="floatingInput">Username</label>
       </div>
-    </div>
-  </body>
-</html>
+      <div class="form-floating">
+        <input type="password" class="form-control mb-2" id="floatingPassword" name="password" placeholder="Password" />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+  </main>
+</div>
+<%-include("partials/footer") %>

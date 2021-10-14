@@ -1,11 +1,18 @@
 const Sample = require("../models/sample.model");
-
+var LocalStorage = require("node-localstorage").LocalStorage;
+var localStorage = new LocalStorage("./sessionData");
 const axios = require("axios");
 const { dialog } = require("electron");
 
 const pdf = require("html-pdf");
 
 exports.createSample = async (req, res) => {
+  let level = parseInt(localStorage.getItem("level"));
+  if (level > 0) {
+    return res.status(401).json({
+      message: "Unauthorized!",
+    });
+  }
   const sample = new Sample({
     sample_id: req.body.sampleId,
     patientName: req.body.patientName,
@@ -70,7 +77,6 @@ exports.getSample = async (req, res) => {
 };
 
 exports.getByDate = async (req, res) => {
-  console.log(req.query);
   const today = new Date();
   const past = new Date();
   past.setMonth(today.getMonth() - 3);
@@ -81,9 +87,6 @@ exports.getByDate = async (req, res) => {
     startDate = new Date(req.query.startDate);
     endDate = new Date(req.query.endDate);
   }
-
-  console.log(startDate);
-  console.log(endDate);
 
   Sample.find({ createdAt: { $gte: startDate, $lte: endDate } })
     .limit(req.query.limit || 1000)
@@ -120,7 +123,6 @@ exports.generateReport = async (req, res) => {
         axios
           .get("http://localhost:3000/printTemplate/" + req.params.sampleId)
           .then((response) => {
-            console.log(response.data);
             pdf.create(response.data, options).toFile(result.filePaths[0] + "/" + req.params.sampleId + "_report.pdf", (err, pdfres) => {
               if (err) {
                 console.log(err);
@@ -165,7 +167,7 @@ exports.randomSampleGen = async (req, res) => {
     end = new Date(),
     sensitivity = {},
     staphPanel = [];
-    pseudoPanel=[];
+  pseudoPanel = [];
   let randomSamples = [];
   for (i = 0; i < count; i++) {
     date = new Date(Math.floor(Math.random() * end.getTime()));

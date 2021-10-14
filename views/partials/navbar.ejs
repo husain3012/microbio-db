@@ -1,25 +1,17 @@
 <nav class="navbar">
   <!-- Left icons -->
   <div class="user-settings">
-    <a type="button" class="navbar-brand" onclick="history.back()"><h1 class="fas fa-arrow-left"></h1> </a>
-    <a href="/" class="navbar-brand"><h1 class="fas fa-home"></h1></a>
-  </div>
-  <!-- Middle form -->
-  <form action="/search" method="POST">
-    <div class="form-field">
-      <input class="form-control nav-form-input" type="text" name="sample_id" placeholder="Sample ID" id="nav-sample-id" />
-    </div>
-    <div class="form-field">
-      <input class="form-control nav-form-input" type="text" name="patientName" placeholder="Patient Name" />
-    </div>
 
-    <button class="btn btn-outline-dark" type="submit">Search</button>
-  </form>
+
+    <!-- <a type="button" class="navbar-brand" onclick="history.back()"><h1 class="fas fa-arrow-left"></h1> </a> -->
+    <a class="history-button" type="button" class="navbar-brand" onclick="history.back()"><h1  class="far fa-arrow-alt-circle-left fa-4x"></h1> </a>
+  </div>
 
   <!-- Right icons -->
   <div class="user-settings d-flex align-items-center">
+    <a href="/" class="me-2"><button class="btn btn-light">Records</button></a>
     <a href="/antibiogram" class="me-2"><button class="btn btn-light">Antibiogram</button></a>
     <a href="/trend_analysis" class="me-2"><button class="btn btn-light">Trend Analysis</button></a>
-    <a href="/login"><button class="btn btn-light">login</button></a>
+    <a href="/logout"><button class="btn btn-light">Logout</button></a>
   </div>
 </nav>

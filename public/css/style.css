@@ -1,5 +1,9 @@
 :root {
-  --primary: #0077B6;
+  --primary: #0077b6;
+  --secondary: #00b4d8;
+  --tertiary: #03045e;
+  --quaternary: #caf0f8;
+
   --blood: #e6849088;
   --urine: #2b934888;
   --puss: #fff49188;
@@ -19,59 +23,86 @@ a:hover {
 .navbar {
   display: flex;
   flex-direction: row;
-<<<<<<< HEAD
   background-color: #0077B6;
-=======
-  background-color: var(--primary);
->>>>>>> 807a9f8962a9ffa551e2522818dd3b1baffa8826
   justify-content: space-between;
   align-items: center;
-  padding: .5rem;
+  padding: 0.5rem;
 }
-.navbar form {
+.bottomMenu {
   display: flex;
-  background-color: #E5E5E5;
-  padding: 5px;
-  border-radius: 5px;
-  margin-bottom: 0;
+  flex-direction: column;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
 }
-.navbar form .form-field {
-  margin: auto 10px auto 0;
-}
-.nav-form-input {
-  width: 25ch;
-}
-.add-new-entry {
+.bottom-menu-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
+  margin-bottom: 10px;
   border-radius: 100%;
-  background-color: var(--primary);
-  opacity: 80%;
   color: #f7f6f2;
   padding: 10px;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   transition: all 0.3s ease;
   cursor: pointer;
+  z-index: 2;
 }
+.bottom-menu-icon img {
+  width: 40px;
+  height: 40px;
+}
+.scroll-to-top:hover,
 .add-new-entry:hover {
   background-color: #ff0a54;
-  opacity: 100%;
   transition: all 0.3s ease;
   transform: scale(1.1);
 }
-.add-new-entry h1 {
-  margin: auto;
-  font-size: 50px;
+.scroll-to-top {
+  background-color: var(--secondary);
+}
+.add-new-entry {
+  background-color: var(--primary);
+}
+.search-records {
+  background-color: var(--tertiary);
+}
+.search-records img {
+  width: 40px;
+}
+.search-form {
+  display: none;
+  background-color: var(--quaternary);
+  padding: 5px;
+  padding-right: 30px;
+  border-radius: 5px;
+  margin-bottom: 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 19;
+  right: 50;
+}
+.search-form .form-field {
+  margin: auto 10px auto 0;
+}
+.search-form-input {
+  width: 25ch;
+}
+.search-rec-btn {
+  background-color: var(--primary);
+  border: none;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
 }
 
-/*********************************  */
+/**************RECORD LIST********************/
 .btn-primary {
   background-color: var(--primary);
+}
+.date-submit {
+  background-color: var(--secondary);
 }
 .card {
   margin: 1rem 0;
@@ -183,11 +214,70 @@ a:hover {
    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
  }
 
- .main-body {
-   margin-top: 50px;
- }
 
- .login-header {
+
+.main-body {
+  margin-top: 50px;
+}
+
+.login-header {
+  background-color: #4b6587;
+  width: 100%;
+  height: 90px;
+}
+.login-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 0;
+  border-radius: 15px;
+  border-width: 3px;
+  border-color: grey;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.login-container-heading {
+  background-color: #b1bed5;
+  height: 60px;
+  margin: 0;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  padding: 30px;
+  text-align: center;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  padding-left: 30px;
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.input-area {
+  height: 35px;
+  width: 370px;
+  margin: 5px;
+  border-style: solid;
+  border-width: 3px;
+  outline: none;
+  border-radius: 20px;
+  background-color: #b1bed5;
+}
+.login-button {
+  background-color: white;
+  height: 45px;
+}
+
+.input-area:hover {
+  background-color: white;
+}
+.login-button:hover {
+  background-color: #b1bed5;
+  height: 45px;
+}
+/********************* LOGIN **********************/
+
+/* .login-header {
    background-color: #4b6587;
    width: 100%;
    height:90px;
@@ -233,45 +323,80 @@ a:hover {
  .login-button {
    background-color: white;
    height:45px;
- }
+ } */
 
- .input-area:hover {
-   background-color: white;
- }
- .login-button:hover {
-   background-color: #B1BED5;
-   height:45px;
- }
+.login-form-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--tertiary);
+}
 
- .sample-heading {
-   font-size: 3rem;
-   font-weight: bold;
- }
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  background-color: #ccc;
+  padding: 1.5rem;
+  /* border-radius: 10px; */
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
 
 
- .sample-doc {
-   font-size: 2rem;
-   font-weight: bold;
- }
 
- @media only screen and (max-width: 800px) {
-  .nav-form-input {
-    width: 20ch;
-  }
-  #nav-sample-id {
+.sample-heading {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.sample-doc {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* antibiogram table */
+#antibiogram-table table tr {
+  background-color: #eee;
+}
+#antibiogram-table table th {
+  background-color: #0077b6;
+  padding: 1px 1rem;
+  color: #fff;
+}
+
+@media only screen and (max-width: 800px) {
+  #search-sample-id {
     width: 13ch;
   }
-  .add-new-entry {
-    right: 20px;
-    bottom: 20px;
+  .bottomMenu {
+    bottom: 0;
+    right: 5px;
+  }
+  .bottom-menu-icon {
     width: 55px;
     height: 55px;
-    opacity: 90%;
+    border: 1px solid white;
   }
-  .add-new-entry h1 {
-    font-size: 30px;
-  }  
-  input, select {
+  .bottom-menu-icon img {
+    width: 30px;
+    height: 30px;
+  }
+  .search-form {
+    bottom: 12px;
+    right: 30px;
+  }
+  input,
+  select {
     margin-bottom: 2px;
   }
   .sample-info {
@@ -282,15 +407,15 @@ a:hover {
   }
  }
 
- /* ------entry container--------- */
-  .entry-container{
-  background-color:  #F7FBFC;
 
-  font-size: 1.2rem;
-  padding:10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  }
-
-  .entry-container input:hover{
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  }
+.btn-light {
+  border-color: #00416a;
+  border-width: medium;
+  color: #00416a;
+  outline: none;
+}
+.btn-light:hover {
+  background-color: #00416a;
+  border-width: medium;
+  color: #FEFBF3;
+}
